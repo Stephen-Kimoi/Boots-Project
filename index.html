@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Safety Boots Hub-Juja </title> 
+
+    <style> 
+    .error, .success {
+        color: white;
+        padding: 5px; 
+        margin: auto; 
+    }
+    .success {
+        background: green; 
+    } 
+    .error {
+        background: red; 
+    }
+    .title {
+        margin: 10px auto; 
+    }
+
+    </style>
+</head>
+<body> 
+
+    <div class="container">  
+        <div class="title">
+            <h1>Add an order</h1>
+        </div>  
+
+        <form id="order-form"> 
+
+            <div> 
+                <label for="customer-no">Customer number</label>
+                <input type="text" id="customer-no" class="u-full-width">
+            </div> 
+
+            <div>
+                <label for="shoe-size">Shoe size</label>  
+                <input type="number" id="shoe-size" class="u-full-width">
+            </div> 
+
+            <div>
+                <label for="location">location</label> 
+                <input type="text" id="location" class="u-full-width">
+            </div> 
+
+            <div>
+                <input type="submit" value="submit" class="u-full-width">
+            </div>
+
+        </form> 
+
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Customer number</th> 
+                    <th>Shoe size</th> 
+                    <th>Location</th> 
+                </tr>
+            </thead>
+            <tbody id="order-list"></tbody>
+        </table>
+      
+    </div>
+    
+    <script src="BootsES5.js"></script>
+</body> 
+</html>
