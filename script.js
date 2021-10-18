@@ -19,7 +19,7 @@ class UI {
             <td>${order.customer}</td>
             <td>${order.size}</td>
             <td>${order.location}</td>
-            <td><a href="#" id="delete" style="color: red; text-decoration: none;">x</a></td>
+            <td><a href="#" class="delete" style="color: red; text-decoration: none;">x</a></td>
         `; 
 
         list.appendChild(row); 
@@ -53,7 +53,7 @@ class UI {
     
     deleteOrder(target) {
         if (confirm('Are you sure you want to delete') | target.className === 'delete') {
-           target.parentElement.remove(); 
+           target.parentElement.parentElement.remove(); 
         }
     }
 } 
@@ -61,19 +61,20 @@ class UI {
 // Local storage class 
 class Store {  
     // Method for fetching orders from local storage 
-    static getOrder() {
+    static getOrder() { 
         let orders; 
         if(localStorage.getItem('orders') === null) {
             orders = []; 
+            console.log(orders)
         } else {
-            books = JSON.parse(localStorage.getItem('orders')); 
+            orders = JSON.parse(localStorage.getItem('orders'));  
         } 
 
         return orders; 
     } 
     
     // Method for displaying orders in the UI 
-    static displayOrder() {
+    static displayOrder() { 
         const order = Store.getOrder(); 
 
         order.forEach(function(order){
@@ -83,12 +84,14 @@ class Store {
         })
     }
 
-/*     // Method for adding orders to local storage 
-    static addOrder(order) {
-        const book = Store.getBooks(); 
-
-
-    } */
+    // Method for adding orders to the local storage 
+    static addAnOrder(order) {  
+        const orders = Store.getOrder(); 
+        
+        orders.push(order); 
+        
+        localStorage.setItem('orders', JSON.stringify(orders)); 
+    }
 } 
 
 // DOM load events 
@@ -124,14 +127,19 @@ document.getElementById('order-form').addEventListener('submit', function(e) {
     e.preventDefault(); 
 });  
 
-// Event listener for delete button 
-document.getElementById('delete').addEventListener('click', function(e) {
-    const ui = new UI(); 
+// Delete function 
+const deleteBtn = document.querySelector('.delete'); 
 
-    ui.deleteOrder(e.target); 
+deleteBtn.addEventListener('click', deleteItem); 
 
-    // Show alert message 
-    ui.showAlert('Book deleted!', 'success'); 
+function deleteItem(e) {
+    // console.log('It works...'); 
+    alert(123)
 
     e.preventDefault(); 
-})
+}
+
+
+
+
+
